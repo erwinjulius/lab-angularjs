@@ -4,18 +4,21 @@ require({
   paths: {
 
     jquery: [
-      '//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min',
-      '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min'
+      '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min',
+      '//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min'      
     ],
 
-    angular: [ 
-      'http://code.angularjs.org/1.1.5/angular.min',
-      '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min'
+    // http://code.angularjs.org/1.2.1/
+    angular: [       
+      '/cdn/ajax/libs/angular.js/1.2.1/angular.min'
+    ],
+
+    angular_route: [
+      '/cdn/ajax/libs/angular.js/1.2.1/angular-route.min'
     ],
 
     angular_resource: [
-      'http://code.angularjs.org/1.1.5/angular-resource.min',
-      '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular-resource.min'
+      '/cdn/ajax/libs/angular.js/1.2.1/angular-resource.min'
     ]
 
   },
@@ -27,12 +30,19 @@ require({
       deps: ['jquery']
     },
 
+    'angular_route': {
+      deps: ['angular']
+    },
+
     'angular_resource': {
       deps: ['angular']
     },
 
     'main/module': { 
-      deps: ['angular', 'angular_resource'] 
+      deps: [
+        'angular_route',
+        'angular_resource'
+      ] 
     },
 
     'controllers/home': { 

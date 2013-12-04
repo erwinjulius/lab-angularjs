@@ -5,7 +5,8 @@
 
   var MOCK_FLAG = true;
 
-  var ANGULAR_VERSION = '1.0.7';
+  // http://code.angularjs.org/1.2.1/
+  var ANGULAR_VERSION = '1.2.1';
 
   //---
 
@@ -16,14 +17,15 @@
     paths: {
 
       'angular': [ 
-        '//ajax.googleapis.com/ajax/libs/angularjs/'+ANGULAR_VERSION+'/angular.min',
-        '//cdnjs.cloudflare.com/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular.min',
-        'http://code.angularjs.org/'+ANGULAR_VERSION+'/angular.min'
+        '/cdn/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular.min'
+      ],
+
+      'angular_route': [
+        '/cdn/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular-route.min'
       ],
 
       'angular_resource': [
-        '//cdnjs.cloudflare.com/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular-resource.min',
-        'http://code.angularjs.org/'+ANGULAR_VERSION+'/angular-resource.min'
+        '/cdn/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular-resource.min'
       ]
 
     },
@@ -35,8 +37,15 @@
         deps: ['angular'] 
       },
 
+      'angular_route': {
+        deps: ['angular'] 
+      },
+
       'main/module': { 
-        deps: ['angular', 'angular_resource'] 
+        deps: [
+          'angular_route', 
+          'angular_resource'
+        ] 
       },
 
       'resources/GitHubUserResource': {
@@ -44,7 +53,10 @@
       },
 
       'controllers/GitHubUserCtrl': { 
-        deps: ['main/module', 'resources/GitHubUserResource'] 
+        deps: [
+          'main/module', 
+          'resources/GitHubUserResource'
+        ] 
       },      
 
       'controllers/AboutCtrl': { 
@@ -86,7 +98,7 @@
     // add more libraries dependencies
 
     config.paths['angular-mocks'] = [
-      'http://code.angularjs.org/'+ANGULAR_VERSION+'/angular-mocks'
+      '/cdn/ajax/libs/angular.js/'+ANGULAR_VERSION+'/angular-mocks'
     ];
 
     config.paths['angular-mocks-backend'] = [
